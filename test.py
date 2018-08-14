@@ -55,7 +55,8 @@ def setup():
     init_session()
     # pacu_instance.set_keys()
 
-    test_run_s3()
+    if test_run_s3():
+        print('Test Successful!')
 
 
 def init_session():
