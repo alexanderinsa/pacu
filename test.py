@@ -25,10 +25,8 @@ def test_run_s3():
 	# SETUP
     conn = boto3.resource('s3', region_name='us-east-1')
     bucket_name = 'my-bucket'
-    conn.create_bucket(Bucket=bucket_name)
-    
-    s3 = boto3.resource('s3')
-    s3.Bucket(bucket_name).put_object(Key='test.txt', Body=b'test')
+    conn.create_bucket(Bucket=bucket_name)    
+    conn.Bucket(bucket_name).put_object(Key='test.txt', Body=b'test')
 
     module = importlib.import_module('modules.s3_bucket_dump.main')
     pacu_instance.exec_module(['run' , 's3_bucket_dump', '--names-only'])
